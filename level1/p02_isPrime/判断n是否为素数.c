@@ -5,7 +5,7 @@ int main()
 	int n,i,m;
 	int a[1000];
 	scanf("%d",&n);
-	if(n==2) printf("yes");
+	if(n==2)  printf("yes");
 	else if(n>2)
 	{
 		for(i=2;i<n;i++)
