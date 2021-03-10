@@ -5,10 +5,9 @@ int main()
 	int n,i,m;
 	int a[1000];
 	scanf("%d",&n);
-	m=(int)sqrt((double)n);
 	if(n>2)
 	{
-		for(i=2;i<m;i++)
+		for(i=2;i<n;i++)
 		{
 			if(n%i==0) {a[i]=1; break;}
 		}
