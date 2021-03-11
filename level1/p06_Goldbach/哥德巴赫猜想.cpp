@@ -6,7 +6,7 @@ int sushu(int n)
 {
 	for(int i=0;i<=24;i++)
 	{
-		if(n==b[i]) return 1;
+		if(n==b[i])  return 1;
 	}
 	return 0;
 }
