@@ -51,7 +51,7 @@ int main()
 				{
 				for(int z=1;z<18;z++)
 				{
-				sleep(0.1);
+				sleep(1);
 				system("cls");
 				c[1][z]=0;
 				c[1][z+1]=1;
@@ -63,7 +63,7 @@ int main()
 		{
 		for(int h=18;h>1;h--)
 			{
-			sleep(0.2);
+			sleep(1);
 			system("cls");
 			c[1][h]=0;
 			c[1][h-1]=1;
