@@ -6,6 +6,26 @@
 #define W 20
 int c[H][W] = {0};
 int i,j,k;
+
+void gotoxy(int x,int y)  //光标移动到(x,y)位置
+{
+    HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD pos;
+    pos.X = x;
+    pos.Y = y;
+    SetConsoleCursorPosition(handle,pos);
+}
+
+void HideCursor()
+
+{
+
+CONSOLE_CURSOR_INFO cursor_info = {1, 0};
+
+SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor_info);
+
+}
+
 void ain()
 {
 	
@@ -43,6 +63,7 @@ void m()
 
 int main()
 {
+	HideCursor(); 
 	ain();
 	m();
 		for(int u=0;;)	
@@ -52,7 +73,7 @@ int main()
 				for(int z=1;z<18;z++)
 				{
 				sleep(1);
-				system("cls");
+				gotoxy(0,0);
 				c[1][z]=0;
 				c[1][z+1]=1;
 				m();
