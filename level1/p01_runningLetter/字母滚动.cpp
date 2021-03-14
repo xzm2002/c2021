@@ -7,7 +7,7 @@
 int c[H][W] = {0};
 int i,j,k;
 
-void gotoxy(int x,int y)  //光标移动到(x,y)位置
+void gotoxy(int x,int y)  
 {
     HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD pos;
