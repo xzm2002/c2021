@@ -4,7 +4,7 @@
 #include<unistd.h>
 #define H 15
 #define W 20
-int c[H][W] ={0};
+int c[H][W] = {0};
 int i,j,k;
 
 void gotoxy(int x,int y)  
