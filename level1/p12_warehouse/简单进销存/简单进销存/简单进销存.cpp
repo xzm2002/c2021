@@ -4,6 +4,7 @@
 #include<windows.h>
 #include<stdlib.h>
 
+
 struct menu
 {
 	int type;
@@ -108,6 +109,26 @@ void print(struct menu* head)
 	}
 	system("pause");
 }
+
+void read(struct menu* head)
+{
+	int m=0;
+	FILE* fp;
+	fp = fopen("订单.txt", "r");
+	rewind(fp);
+	fscanf(fp, "%d", &m);
+	struct menu* p;
+	for (int i = 0; i < m; i++)
+	{
+		int x=0, y=0;
+		fscanf(fp, "%d", &x);
+		fscanf(fp, "%d", &y);
+		p = newmenu(x,y);
+		append(&head, p);
+	}
+	fclose(fp);
+}
+
 void show()
 {
 	printf("1、显示存货列表\n");
@@ -118,7 +139,38 @@ void show()
 	printf("\n");
 	printf("4、退出程序\n");
 	printf("\n");
-	printf("请输入 1 2 3 4进行操作");
+	printf("请输入 1 2 3 4 进行操作");
+}
+
+int count(struct menu* head)
+{
+	int m = 0;
+	struct menu* p;
+	p = head;
+	while (p->next != NULL)
+	{
+		p = p->next;
+		m++;
+	}
+	return m;
+}
+
+void turn(struct menu* head)
+{
+	FILE* fp;
+	int m = 0;
+	fp = fopen("订单.txt", "w");
+	rewind(fp);
+	m = count(head);
+	struct menu* p;
+	p = head->next;
+	fprintf(fp, "%d\n", m);
+	for (int i = 0; i < m; i++)
+	{
+		fprintf(fp, "%d %d\n", p->type, p->number);
+		p = p->next;
+	}
+	fclose(fp);
 }
 
 void input(struct menu*p)
@@ -164,14 +216,17 @@ void input(struct menu*p)
 			}
 			else if (input == '4')
 			{
+				turn(p);
 				exit(0);
 			}
 		}
 	}
 }
+
 int main()
 {
 	struct menu* p = start();
+	read(p);
 	while (1)
 	{
 		system("cls");
